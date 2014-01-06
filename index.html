@@ -28,24 +28,27 @@
 
 <div id='map'></div>
 <div id='footer'>
-    <a class="btn btn-primary active" href='#' data-position='45.51, -73.55'>Montréal</a>
-    <a class="btn btn-primary" href='#' data-position='18.47, -69.9'>Santo Domingo</a>
+    <a class="btn btn-primary" href='#' data-position='45.51, -73.55'>Montréal</a>
+    <a class="btn btn-primary active" href='#' data-position='18.47, -69.9'>Santo Domingo</a>
     <a class="btn btn-primary" href='#' data-position='43.59, 39.72'>Sochi</a>
     <a class="btn btn-primary" href='#' data-position='34.05, -118.24'>Los Angeles</a>
     <a class="btn btn-primary" href='#' data-position='52.23, 21.01'>Warsaw</a>
 </div>
 <script src='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.js'></script>
+<script src='http://asset.geosprocket.com/leaflet/leaflet-hash.js'></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src='//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'></script>
 
 <script>
 var map = L.mapbox.map('map');
 
-L.tileLayer('https://s3.amazonaws.com/geosprocket/tiles/geosprocketbrightmtl-base/{z}/{x}/{y}.png', {
+L.tileLayer('https://s3.amazonaws.com/geosprocket/tiles/geosprocketbrightSantoDomingo1/{z}/{x}/{y}.png', {
 	  maxZoom: 17,
 	  attribution: "<a href='http://osm.org' target='_blank'>&copy; Openstreetmap Contributors<\/a>",
 	}).addTo(map);
-	map.setView([45.51, -73.55], 11);
+	map.setView([18.47, -69.9], 12);
+
+var hash = new L.Hash(map);
 
 $('.btn').click( function(e) {
 	$('.btn').removeClass('active');
@@ -54,6 +57,7 @@ $('.btn').click( function(e) {
     if (pos) {
         var loc = pos.split(',');
         map.setView(loc, 11);
+        var hash = new L.Hash(map);
     }
 })
 </script>
